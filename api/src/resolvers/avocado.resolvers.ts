@@ -7,7 +7,9 @@ async function findAll(
   args: unknown,
   context: ResolverContext
 ): Promise<Avocado[]> {
-  const avocados = await context.orm.avocado.findMany()
+  const avocados = await context.orm.avocado.findMany({
+    include: { attributes: true },
+  })
   return avocados
 }
 
