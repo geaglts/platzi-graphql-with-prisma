@@ -1,7 +1,8 @@
 type Attributes {
-  shape: String!
-  taste: String!
-  hardiness: String!
+  description: String
+  shape: String
+  taste: String
+  hardiness: String
 }
 
 type Avocado {
@@ -9,17 +10,15 @@ type Avocado {
   sku: String!
   name: String!
   price: Float!
-  description: String!
-  imgUrl: String!
+  image: String!
   attributes: Attributes
 }
 
 input inputCreateAvocado {
-  sku: String!
   name: String!
   price: Float!
+  image: String!
   description: String!
-  imgUrl: String!
   shape: String!
   taste: String!
   hardiness: String!

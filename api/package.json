@@ -8,9 +8,11 @@
     "dev": "nodemon src/index.ts"
   },
   "dependencies": {
+    "@prisma/client": "^3.8.1",
     "apollo-server": "^3.6.1",
     "graphql": "^16.2.0",
     "nodemon": "^2.0.15",
+    "prisma": "^3.8.1",
     "ts-node": "^10.4.0"
   }
 }

@@ -10,16 +10,15 @@ export type Avocado = {
   name: string
   price: number
   description: string
-  imgUrl: string
+  image: string
   attributes: Attributes
 }
 
 export type InputCreateAvocado = {
-  sku: string
   name: string
   price: number
   description: string
-  imgUrl: string
+  image: string
   shape: string
   taste: string
   hardiness: string
