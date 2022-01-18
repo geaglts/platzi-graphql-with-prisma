@@ -1,0 +1,35 @@
+type Attributes {
+  shape: String!
+  taste: String!
+  hardiness: String!
+}
+
+type Avocado {
+  id: ID!
+  sku: String!
+  name: String!
+  price: Float!
+  description: String!
+  imgUrl: String!
+  attributes: Attributes
+}
+
+input inputCreateAvocado {
+  sku: String!
+  name: String!
+  price: Float!
+  description: String!
+  imgUrl: String!
+  shape: String!
+  taste: String!
+  hardiness: String!
+}
+
+type Query {
+  getAvocados: [Avocado]
+  getAvocado(id: ID!): Avocado
+}
+
+type Mutation {
+  addAvocado(data: inputCreateAvocado!): Avocado
+}
