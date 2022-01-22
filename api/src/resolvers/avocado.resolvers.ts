@@ -13,6 +13,18 @@ async function findAll(
   return avocados
 }
 
+async function findById(
+  parent: unknown,
+  args: { id: string },
+  context: ResolverContext
+): Promise<Avocado | null> {
+  const avocado = await context.orm.avocado.findUnique({
+    where: { id: parseInt(args.id, 10) },
+    include: { attributes: true },
+  })
+  return avocado
+}
+
 async function createOne(
   parent: unknown,
   { data }: { data: InputCreateAvocado },
@@ -35,4 +47,4 @@ async function createOne(
   return avocado
 }
 
-export default { findAll, createOne }
+export default { findAll, createOne, findById }

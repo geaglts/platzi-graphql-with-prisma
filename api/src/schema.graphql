@@ -1,3 +1,5 @@
+scalar Date
+
 type Attributes {
   description: String
   shape: String
@@ -12,6 +14,9 @@ type Avocado {
   price: Float!
   image: String!
   attributes: Attributes
+  createdAt: Date
+  updatedAt: Date
+  deletedAt: Date
 }
 
 input inputCreateAvocado {

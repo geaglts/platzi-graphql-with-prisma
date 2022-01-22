@@ -1,11 +1,10 @@
 import avocadoResolver from './avocado.resolvers'
-import type { InputCreateAvocado } from '../types/Graphql.types'
-import type { Avocado } from '@prisma/client'
-
+import dateScalar from './scalar.resolvers'
 export default {
+  Date: dateScalar,
   Query: {
     getAvocados: avocadoResolver.findAll,
-    getAvocado: (prnt: any, prms: { id: string }, ctx: unknown) => null,
+    getAvocado: avocadoResolver.findById,
   },
   Mutation: {
     addAvocado: avocadoResolver.createOne,
