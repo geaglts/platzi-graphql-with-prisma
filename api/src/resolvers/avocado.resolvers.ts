@@ -1,14 +1,17 @@
-import { Avocado } from '@prisma/client'
+import { Avocado, Prisma } from '@prisma/client'
 import type { ResolverContext } from '../types/Resolvers.types'
 import type { InputCreateAvocado } from '../types/Graphql.types'
 
 async function findAll(
   parent: unknown,
-  args: unknown,
+  args: { skip?: number; take?: number; where?: Prisma.AvocadoWhereInput },
   context: ResolverContext
 ): Promise<Avocado[]> {
   const avocados = await context.orm.avocado.findMany({
     include: { attributes: true },
+    skip: args.skip,
+    take: args.take,
+    where: args.where,
   })
   return avocados
 }

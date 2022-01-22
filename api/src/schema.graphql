@@ -30,10 +30,26 @@ input inputCreateAvocado {
 }
 
 type Query {
-  getAvocados: [Avocado]
+  getAvocados(skip: Int, take: Int, where: avocadoWhere): [Avocado]
   getAvocado(id: ID!): Avocado
 }
 
 type Mutation {
   addAvocado(data: inputCreateAvocado!): Avocado
+}
+
+input avocadoWhere {
+  name: StringFilter
+  price: Float
+}
+
+input StringFilter {
+  equals: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  contains: String
+  startsWith: String
+  endsWith: String
 }
