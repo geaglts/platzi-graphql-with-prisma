@@ -5,6 +5,7 @@ import { PrismaClient } from '@prisma/client'
 import { ApolloServer } from 'apollo-server-express'
 import { ApolloServerPluginDrainHttpServer } from 'apollo-server-core'
 import resolvers from './resolvers'
+import { RequestUser } from './types/Express.types'
 
 import app from './server'
 
@@ -18,8 +19,12 @@ async function startApolloServer() {
   const server = new ApolloServer({
     typeDefs,
     resolvers,
-    context: { orm },
+    context: ({ req }) => {
+      const { user } = req as RequestUser
+      return { orm, user }
+    },
     plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
+    introspection: true,
   })
   await server.start()
   server.applyMiddleware({ app, path: '/graphql' })
