@@ -7,8 +7,12 @@ function auth(req: RequestUser, res: Response, next: NextFunction) {
   const authorization = req.headers.authorization
   const token = authorization?.replace('Bearer ', '')
   if (token) {
-    const payload = verifyToken(token as string)
-    req.user = payload
+    try {
+      const payload = verifyToken(token as string)
+      req.user = payload
+    } catch (error) {
+      next('sorry, check your token')
+    }
   } else {
     req.user = null
   }

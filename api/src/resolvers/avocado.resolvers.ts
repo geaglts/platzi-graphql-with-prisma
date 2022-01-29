@@ -7,7 +7,6 @@ async function findAll(
   args: { skip?: number; take?: number; where?: Prisma.AvocadoWhereInput },
   context: ResolverContext
 ): Promise<Avocado[]> {
-  console.log(context.user)
   const avocados = await context.orm.avocado.findMany({
     include: { attributes: true },
     skip: args.skip,

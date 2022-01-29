@@ -5,7 +5,11 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon src/index.ts"
+    "build": "prisma migrate deploy && yarn clean && tsc --build && yarn copyfiles",
+    "copyfiles": "copyfiles src/schema.graphql public/* ../dist/api",
+    "clean": "rimraf ../dist/api",
+    "dev": "nodemon index.ts",
+    "start": "node ../dist/api"
   },
   "dependencies": {
     "@prisma/client": "^3.8.1",
@@ -26,6 +30,8 @@
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",
     "@types/cors": "^2.8.12",
-    "@types/prompt": "^1.1.2"
+    "@types/prompt": "^1.1.2",
+    "copyfiles": "^2.4.1",
+    "rimraf": "^3.0.2"
   }
 }

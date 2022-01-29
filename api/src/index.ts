@@ -9,7 +9,7 @@ import { RequestUser } from './types/Express.types'
 
 import app from './server'
 
-async function startApolloServer() {
+export default async function startApolloServer() {
   const typeDefs = readFileSync(path.join(__dirname, 'schema.graphql'), 'utf8')
   const orm = new PrismaClient()
 
@@ -35,5 +35,3 @@ async function startApolloServer() {
 
   console.log(`🚀 Listening on *${server.graphqlPath}`)
 }
-
-startApolloServer()

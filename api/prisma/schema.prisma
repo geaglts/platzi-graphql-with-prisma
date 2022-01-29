@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -35,6 +32,6 @@ model Attributes {
   hardiness   String?
   shape       String?
   taste       String?
-  avocado     Avocado @relation(fields: [avocadoId], references: [id])
   avocadoId   Int     @unique
+  avocado     Avocado @relation(fields: [avocadoId], references: [id])
 }
