@@ -9,7 +9,10 @@
     "packages/*"
   ],
   "scripts": {},
-  "author": "@jonalvarezz",
+  "engines": {
+    "node": "14.x"
+  },
+  "author": "@geaglts",
   "license": "MIT",
   "prettier": {
     "trailingComma": "es5",

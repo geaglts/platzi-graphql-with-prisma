@@ -9,6 +9,8 @@ import { RequestUser } from './types/Express.types'
 
 import app from './server'
 
+const port = process.env.PORT || 4000
+
 export default async function startApolloServer() {
   const typeDefs = readFileSync(path.join(__dirname, 'schema.graphql'), 'utf8')
   const orm = new PrismaClient()
@@ -29,9 +31,7 @@ export default async function startApolloServer() {
   await server.start()
   server.applyMiddleware({ app, path: '/graphql' })
 
-  await new Promise<void>((resolve) =>
-    httpServer.listen({ port: 4000 }, resolve)
-  )
+  await new Promise<void>((resolve) => httpServer.listen({ port }, resolve))
 
   console.log(`🚀 Listening on *${server.graphqlPath}`)
 }
